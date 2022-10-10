@@ -10,8 +10,7 @@ cadastroDeAutos = {
 "9BWZZZ377VT004259":["FUSION","FORD","2021",120000,"BRANCO","AUTOMÁTICO"],
 }
 
-inicio = input(
-    "Podemos Iniciar o Programa?\nDigite 'S' para Sim, ou 'N' para Não: ").upper()
+inicio = input("Podemos Iniciar o Programa?\nDigite 'S' para Sim, ou 'N' para Não: ").upper()
 
 # Menu de ações
 while(inicio == "S"):
@@ -28,8 +27,6 @@ while(inicio == "S"):
     solicitacao = input("Digite o Número da Opção Desejada: ").upper()
 
 # Função de adicionar/cadastrar automóvel
-
-
     def addAuto():
         chassi = input("Digite o Chassi do Automóvel: ")
         if len(chassi) == 17:
@@ -51,6 +48,7 @@ while(inicio == "S"):
                 print("Automóvel Cadastrado com Sucesso!")
                 print('============================================================')
                 return
+                
         elif (len(chassi) > 17) or (len(chassi) < 17):
             if chassi == "0":
                 print("Voltando para o Menu...")
@@ -141,36 +139,76 @@ while(inicio == "S"):
                 meses = input("Digite a Opção Escolhida: ")
 
                 if (meses == "1" or meses == "01"):
-                    juros = 0.05
-                    meses = 12
+                    vf = valorOriginal * (1 + 0.05) ** 12
                     print('============================================================')
                     print(f'O Valor do Automóvel é: R$ {real(valorOriginal)}')
-                    print(f'O Valor Total do Automóvel Parcelado em 12x é: R$ {real(valorOriginal + (valorOriginal * juros))} considerando juros de {(juros * 100)}% ao mês.')
-                    print(f'Com Parcelas de R$ {real((valorOriginal + (valorOriginal * juros)) / meses)} ao mês')
+                    print(f'O Valor Total do Automóvel Parcelado em 12x é: R$ {real(vf)} considerando juros de 5% ao mês.')
+                    print(f'Com Parcelas de R$ {real(vf / 12)} ao mês')
+                    vender = input("Deseja Realizar a Compra em 12x?\nA) Sim - B) Não : ").lower()
+                    if vender == "a" or vender == "sim":
+                        cadastroDeAutos.pop(chassi, None)
+                        print("Venda Realizada com Sucesso!!!")
+                        
+                    elif vender == "b" or vender == "não":
+                        print("Consultar Outras Condições...")
+                        return venderAuto()
+                    else:
+                        print("Digite uma Opção Válida!")
+                        return venderAuto()
                     print('============================================================')
                 elif (meses == "2" or meses == "02"):
-                    juros = 0.06
-                    meses = 24
+                    vf = valorOriginal * (1 + 0.06) ** 24
                     print('============================================================')
                     print(f'O Valor do Automóvel é: R$ {real(valorOriginal)}')
-                    print(f'O Valor Total do Automóvel Parcelado em 24x é: R$ {real(valorOriginal + (valorOriginal * juros))} considerando juros de {(juros * 100)}% ao mês.')
-                    print(f'Com Parcelas de R$: R$ {real((valorOriginal + (valorOriginal * juros)) / meses)} ao mês')
+                    print(f'O Valor Total do Automóvel Parcelado em 24x é: R$ {real(vf)} considerando juros de 6% ao mês.')
+                    print(f'Com Parcelas de R$ {real(vf / 24)} ao mês')
+                    vender = input("Deseja Realizar a Compra em 24x?\nA) Sim - B) Não : ").lower()
+                    if vender == "a" or vender == "sim":
+                        cadastroDeAutos.pop(chassi, None)
+                        print("Venda Realizada com Sucesso!!!")
+                        
+                    elif vender == "b" or vender == "não":
+                        print("Consultar Outras Condições...")
+                        return venderAuto()
+                    else:
+                        print("Digite uma Opção Válida!")
+                        return venderAuto()
                     print('============================================================')
                 elif (meses == "3" or meses == "03"):
-                    juros = 0.07
-                    meses = 36
+                    vf = valorOriginal * (1 + 0.07) ** 36
                     print('============================================================')
                     print(f'O Valor do Automóvel é: R$ {real(valorOriginal)}')
-                    print(f'O Valor Total do Automóvel Parcelado em 36x é: R$ {real(valorOriginal + (valorOriginal * juros))} considerando juros de {(juros * 100)}% ao mês.')
-                    print(f'Com Parcelas de R$: R$ {real((valorOriginal + (valorOriginal * juros)) / meses)} ao mês')
+                    print(f'O Valor Total do Automóvel Parcelado em 36x é: R$ {real(vf)} considerando juros de 7% ao mês.')
+                    print(f'Com Parcelas de R$ {real(vf / 36)} ao mês')
+                    vender = input("Deseja Realizar a Compra em 36x?\nA) Sim - B) Não : ").lower()
+                    if vender == "a" or vender == "sim":
+                        cadastroDeAutos.pop(chassi, None)
+                        print("Venda Realizada com Sucesso!!!")
+                        
+                    elif vender == "b" or vender == "não":
+                        print("Consultar Outras Condições...")
+                        return venderAuto()
+                    else:
+                        print("Digite uma Opção Válida!")
+                        return venderAuto()
                     print('============================================================')
                 elif (meses == "4" or meses == "04"):
-                    juros = 0.08
-                    meses = 48
+                    vf = valorOriginal * (1 + 0.08) ** 48
                     print('============================================================')
                     print(f'O Valor do Automóvel é: R$ {real(valorOriginal)}')
-                    print(f'O Valor Total do Automóvel Parcelado em 48x é: R$ {real(valorOriginal + (valorOriginal * juros))} considerando juros de {(juros * 100)}% ao mês.')
-                    print(f'Com Parcelas de R$: R$ {real((valorOriginal + (valorOriginal * juros)) / meses)} ao mês')
+                    print(f'O Valor Total do Automóvel Parcelado em 48x é: R$ {real(vf)} considerando juros de 8% ao mês.')
+                    print(f'Com Parcelas de R$ {real(vf / 48)} ao mês')
+                    vender = input("Deseja Realizar a Compra em 48x?\nA) Sim - B) Não : ").lower()
+                    if vender == "a" or vender == "sim":
+                        cadastroDeAutos.pop(chassi, None)
+                        print("Venda Realizada com Sucesso!!!")
+                        
+                    elif vender == "b" or vender == "não":
+                        print("Consultar Outras Condições...")
+                        return venderAuto()
+                    else:
+                        print("Digite uma Opção Válida!")
+                        return venderAuto()
                     print('============================================================')
                 else:
                     print('============================================================')
